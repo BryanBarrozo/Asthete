@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: auto;
+    width: 100vw;
+}
+
+#root {
+    height: auto;
+    width: 100vw;
+
+    display: grid;
+
+}
+
+/*
+  font-family: var(--font-title);
+
+  font-family: var(--font-body);
+*/
