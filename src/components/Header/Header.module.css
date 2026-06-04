@@ -14,12 +14,13 @@
     padding: 0 4rem;
 }
 
+/*Nav CSS*/
 .navBar{
     display: flex;
     gap: 2rem;
 }
 
-.navBar a{
+.toggleNavBar a, .navBar a{
     position: relative;
     font-family: "Hanken Grotesk", sans-serif;
     font-size: 0.875rem; 
@@ -32,11 +33,11 @@
     transition: color 0.2s ease;
 }
 
-.navBar a:hover{
+.toggleNavBar a:hover,.navBar a:hover{
     color: #000000;
 }
 
-.navBar a::after{
+.toggleNavBar a::after, .navBar a::after{
     content: '';
 
     position: absolute;
@@ -52,17 +53,74 @@
     transition: width 0.3s ease;
 }
 
-.navBar a:hover::after{
+.toggleNavBar a:hover::after, .navBar a:hover::after{
     width: 100%;
 
 }
 
+/*toggle menu*/
+.menuButton {
+    display: none;
 
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.toggleNavBar {
+    position: fixed;
+
+    top: 80px;
+    left: 0;
+
+    width: 170px;
+    height: calc(100vh - 80px);
+
+    background-color: #fbf9f9;
+    border-right: 1px solid #c4c7c7;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    padding: 2rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(-100%);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 999;
+}
+
+.toggleNavBar a {
+    text-decoration: none;
+
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+
+    color: #444748;
+}
+.open {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(0);
+}
+/*----------------------*/
 .title{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    
+
     font-family: 'EB Garamond', serif;
     font-size: 1.75rem; 
     font-weight: 400;
@@ -72,9 +130,7 @@
     cursor: pointer;
 }
 
-.links{
-    font-family: 'Hanken Grotesk', sans-serif;
-}
+/*----------------------*/
 
 .menu{
     display: flex;
@@ -88,4 +144,38 @@
 
 .menu svg:hover{
     opacity: 0.6;
+}
+
+@media (max-width: 1150px) {
+
+    .navBar {
+        display: none;
+    }
+
+    .menuButton {
+        display: block;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .menu{
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    .head{
+        padding: 0 2rem;
+    }
+    
+}
+@media (max-width: 500px){
+
+    .title{
+        font-size: 1.4rem;
+    }
+    .menu{
+        font-size: 0.8rem;
+    }
+    
 }
