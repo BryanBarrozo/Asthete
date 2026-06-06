@@ -3,6 +3,9 @@ import './App.css'
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
 
+import NewArrivals from './components/NewArrivals/NewArrivals'
+
+import About from './components/About/About'
 
 function App() {
   
@@ -11,6 +14,8 @@ function App() {
     <>
     <Header/>
     <Hero/>
+    <NewArrivals/>
+    <About/>
     </>
   )
 }

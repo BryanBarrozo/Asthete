@@ -18,6 +18,10 @@ body{
 
 }
 
+h2,h3,p,span{
+    cursor: default;
+}
+
 /*
   font-family: var(--font-title);
 
