@@ -44,8 +44,6 @@
     background-color: #000;
 }
 
-
-
 .header a:hover{
     opacity: .6;
 }
@@ -95,6 +93,11 @@
     aspect-ratio: 16 / 10;
 
     object-fit: cover;
+
+    transition: transform .3s ease;
+}
+.mainItem img:hover{
+    transform: scale(1.02);
 }
 
 .mainItem div{

@@ -24,3 +24,25 @@ Exemplo de produto
     featured: true,
     newArrival: true
 }
+
+
+
+Paginas tenho que criar:
+HomePage X
+obs: falta a parte do jornal
+
+LoginPage X
+obs: melhorar a logica de validação
+
+Working{
+    RegisterPage
+}
+
+ProductsPage
+ProductDetailsPage
+CartPage
+CheckoutPage
+
+imagens:
+//Tom Crew
+//Linh Le
