@@ -79,7 +79,7 @@ function LoginPage(){
                 </div>
 
                 <div className={styles.rowContainer}>
-                    <div>
+                    <div className={styles.labelPassword}>
                         <label htmlFor="password">PASSWORD</label>
                        <Link to="/forgot-password" className={styles.forgot}>Forgot Password?</Link>{/*ainda não possue link*/}
                     </div>

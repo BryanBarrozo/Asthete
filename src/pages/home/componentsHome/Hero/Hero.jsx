@@ -1,7 +1,6 @@
 import styles from "./Hero.module.css"
 
-import heroImg from '../../assets/images/heroImg.jpg'
-
+import heroImg from '../../../../assets/images/heroImg.jpg'
 
 function Hero(){
     return(

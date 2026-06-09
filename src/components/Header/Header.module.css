@@ -121,10 +121,15 @@
     left: 50%;
     transform: translateX(-50%);
 
+    
+}
+.title a{
     font-family: 'EB Garamond', serif;
     font-size: 1.75rem; 
     font-weight: 400;
     letter-spacing: -0.05em;
+
+    text-decoration: none;
 
     color: #000000;
     cursor: pointer;
@@ -137,12 +142,13 @@
     gap: 2rem;
 }
 
-.menu svg{
+.menu a{
+    color: #000;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
 
-.menu svg:hover{
+.menu a:hover{
     opacity: 0.6;
 }
 

@@ -1,5 +1,6 @@
 import styles from './Header.module.css'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -43,27 +44,27 @@ function Header() {
                     menu ? styles.open : ''
                 }`}
             >
-                <a href="">New Arrivals</a>
-                <a href="">Collection</a>
-                <a href="">Objects</a>
-                <a href="">Journal</a>
-                <a href="">About</a>
+                <Link>New Arrivals</Link>
+                <Link to='/collection'>Collection</Link>
+                <Link>Objects</Link>
+                <Link>Journal</Link>
+                <Link>About</Link>
             </nav>
 
             <nav className={styles.navBar}>
-                <a href="">New Arrivals</a>
-                <a href="">Collection</a>
-                <a href="">Objects</a>
-                <a href="">Journal</a>
-                <a href="">About</a>
+                <Link>New Arrivals</Link>
+                <Link to='/collection'>Collection</Link>
+                <Link>Objects</Link>
+                <Link>Journal</Link>
+                <Link>About</Link>
             </nav>
 
-            <h1 className={styles.title}>AESTHETE</h1>
+            <h1 className={styles.title}> <Link to="/">AESTHETE</Link></h1>
 
             <div className={styles.menu}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-                <FontAwesomeIcon icon={faUser} />
-                <FontAwesomeIcon icon={faBagShopping} />
+                <Link><FontAwesomeIcon icon={faMagnifyingGlass}/></Link>
+                <Link to='/register'><FontAwesomeIcon icon={faUser}/></Link>
+                <Link><FontAwesomeIcon icon={faBagShopping} /></Link>
             </div>
 
         </header>

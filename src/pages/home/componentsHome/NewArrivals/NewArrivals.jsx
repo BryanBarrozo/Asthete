@@ -1,6 +1,6 @@
 import styles from './NewArrivals.module.css'
 
-import ProductCard from '../ProductCard/ProductCard'
+import ProductCard from '../../../../components/ProductCard/ProductCard'
 
 function NewArrivals(){
 

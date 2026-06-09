@@ -95,6 +95,7 @@
     object-fit: cover;
 
     transition: transform .3s ease;
+    cursor: pointer;
 }
 .mainItem img:hover{
     transform: scale(1.02);

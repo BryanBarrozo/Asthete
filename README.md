@@ -1,6 +1,6 @@
 Criar Api depois de termina o frontend
 
-
+30% da pagina esta pronto
 
 24 produtos
 6 categorias
@@ -28,17 +28,20 @@ Exemplo de produto
 
 
 Paginas tenho que criar:
+
 HomePage X
 obs: falta a parte do jornal
 
 LoginPage X
 obs: melhorar a logica de validação
 
-Working{
-    RegisterPage
-}
+RegisterPage X
+obs: melhorar a logica de validação
+    adicionar mensagens quando o usuario errar na senha ou no email
+    
+Working(ProductsPage)
 
-ProductsPage
+
 ProductDetailsPage
 CartPage
 CheckoutPage
