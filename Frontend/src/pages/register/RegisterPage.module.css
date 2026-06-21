@@ -1,0 +1,155 @@
+.container{
+    display: flex;
+    min-height: 100vh;
+    background-color: #f6f4f2;
+}
+
+.container img{
+    width: 50%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.container form{
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 0.5rem;
+    padding: 4rem 6rem;
+    
+}
+
+/*Text*/
+.rowContainer h1{
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    color: #000;
+    margin: 0;
+}
+
+.rowContainer h2{
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #000;
+
+    margin: 0;
+}
+
+.rowContainer p{
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.8;
+    color: #444748;
+
+    margin: 0;
+}
+
+.rowContainer label{
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    color: #444748;
+}
+.container form span{
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    color: #444748;
+}
+/*Inputs*/
+.inputEmail,
+.inputName,
+.inputPassword{
+    width: 100%;
+    padding: 0.9rem 1rem;
+
+    border: 1px solid #c4c7c7;
+    border-radius: 4px;
+
+    font-size: 1rem;
+    background: transparent;
+
+    transition: border-color .3s ease;
+}
+
+.inputEmail:focus,
+.inputName:focus,
+.inputPassword:focus{
+    outline: none;
+    border-color: #000;
+}
+
+.containerCheck {
+    display: flex;
+    
+    gap: 10px;
+
+    padding: 5px 0;
+}
+.containerCheck label{
+    margin-top: 7px;
+}
+
+
+
+/*error input*/
+.error{
+    border: 1px solid #ba1a1a;
+}
+
+#errorMessage{
+    font-family: 'Hanken Grotesk', sans-serif;
+
+    margin: 0;
+    color: #ba1a1a;
+}
+
+/*Button*/
+.createButton{
+    width: 100%;
+    padding: 1rem;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #000;
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.createButton:hover{
+    opacity: 0.9;
+}
+
+
+@media (max-width: 1000px){
+
+    .container img{
+        display: none;
+    }
+
+    .container form{
+        width: 100%;
+        padding: 2rem;
+    }
+
+}
