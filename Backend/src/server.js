@@ -1,7 +1,27 @@
 const express = require("express");
 
-const server = express();
+import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
+
+const server = express();
+server.use(express.json()); //permitindo que o express use arquivos JSON
+
+server.post("/register", async (req, res) => {
+  const user = await prisma.users.create({
+    data: {
+      email: req.body.email,
+      name: req.body.name,
+      password: req.body.password,
+    },
+  });
+
+  return res.status(201).json(user);
+});
+
+
+
+server.listen(3000);
 
 /*
 Sintaxe:
@@ -19,14 +39,14 @@ o usuario vai para pagina especifica desse produto, id do produto é 29 "/produc
 
 
 
-*/
-
 
 server.get("/hello", (req, res) => {
     console.log("rota /hello chamada");
     return res.send("hello world");
     console.log("valor")
 });
+
+
 
 server.get("/product/:id", (req, res) =>{
     const id = req.params.id;
@@ -38,6 +58,9 @@ server.get("/product/:id", (req, res) =>{
         img: "src da imagem"
         
     })
-})
+}),
 
-server.listen(3000);
+users.push(req.body);
+  //recebe informações da pagina e passa para a variavel users
+  //"push" coloca na ultima posição da variavel
+*/

@@ -1,6 +1,3 @@
-Criar Api depois de termina o frontend
-
-30% da pagina esta pronto
 
 24 produtos
 6 categorias
@@ -21,8 +18,6 @@ Exemplo de produto
     price: 129,
     image: "...",
     description: "Handcrafted vase in natural travertine stone.",
-    featured: true,
-    newArrival: true
 }
 
 
