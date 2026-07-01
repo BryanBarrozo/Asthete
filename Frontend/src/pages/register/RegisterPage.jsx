@@ -4,6 +4,8 @@ import loginImg from "../../assets/images/loginImg.jpg";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import validator from "validator";
+import api from "../../services/api";
+
 
 function RegisterPage() {
   const {
@@ -13,14 +15,22 @@ function RegisterPage() {
   } = useForm();
 
   //Main Function
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      await api.post("/register", data);
+
+      alert("Account created");
+    } catch (error) {
+      alert("Error");
+    }
   };
 
   return (
     <main className={styles.container}>
       <img src={loginImg} alt="green plant in brown wooden pot" />
-      <form>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.rowContainer}>
           <h1>AESTHETE</h1>
         </div>
@@ -102,13 +112,7 @@ function RegisterPage() {
         {errors?.privacyTerms?.type === "required" && (
           <p id={styles.errorMessage}>You must agree with the privacy terms.</p>
         )}
-        <button
-          onClick={() => {
-            handleSubmit(onSubmit)();
-          }}
-          type="button"
-          className={styles.createButton}
-        >
+        <button type="submit" className={styles.createButton}>
           CREATE ACCOUNT
         </button>
 
