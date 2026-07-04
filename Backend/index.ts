@@ -7,20 +7,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-
-server.get("/", async (req, res) => {
-  try {
-    const users = await prisma.users.findMany();
-
-    return res.status(200).json(users);
-  } catch (error) {
-    console.error(error);
-
-    return res.status(500).json({
-      message: "Erro ao buscar usuários.",
-    });
-  }
-});
+server.get("/", async (req, res) => {});
 
 server.post("/register", async (req, res) => {
   try {
@@ -33,17 +20,48 @@ server.post("/register", async (req, res) => {
         password,
       },
     });
-    console.log("usuario registrado")
+    console.log("usuario registrado");
     return res.status(201).json(user);
   } catch (error) {
     console.error(error);
 
     return res.status(500).json({
-      message: "Erro ao cadastrar usuário.",
+      message: "Error on register new user.",
+    });
+  }
+});
+
+server.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await prisma.users.findUnique({
+      //encontrando email do usuario
+      where: {
+        email,
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      }); //not found
+    }
+    if (user.password !== password) {
+      return res.status(401).json({
+        message: "Password is incorrect.",
+      });
+    }
+    return res.status(200).json({
+      message: "Login successful.",
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Internal server error.",
     });
   }
 });
 
 server.listen(3000, () => {
-  console.log("🚀 Servidor rodando em http://localhost:3000");
+  console.log("Servidor rodando");
 });

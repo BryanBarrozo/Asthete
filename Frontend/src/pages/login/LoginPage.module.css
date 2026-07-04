@@ -94,8 +94,8 @@
 .error{
     border: 1px solid #ba1a1a;
 }
-.success{
-    border: 1px solid #139202;
+#errorMessage{
+    color: #ba1a1a;
 }
 
 /* Password Row */
