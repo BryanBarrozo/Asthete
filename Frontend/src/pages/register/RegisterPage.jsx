@@ -18,9 +18,9 @@ function RegisterPage() {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      await api.post("/register", data);
+     const response = await api.post("/register", data);
 
-      alert("Account created");
+      alert(response.data.message);
     } catch (error) {
       alert("Error");
     }

@@ -13,20 +13,20 @@ function LoginPage() {
     formState: { errors },
   } = useForm();
 
-  //Main Function
+  
   const onSubmit = async (data) => {
     try {
       const response = await api.post("/login", data);
-      console.log(response.data);
-      alert("Login funcionando", response.data)
+
+      alert(response.data.message);
+      localStorage.setItem("token", response.data.token);//temporario, em breve, cookies
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
       } else {
-        alert("Não foi possível conectar ao servidor.");
+        alert("Internal error.");
       }
     }
-    //requisitando informaçao de login para ver se usuario existe
   };
 
   return (
