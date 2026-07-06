@@ -10,14 +10,6 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-async function authentication(req, res){
-  try{
-    
-  }catch{
-
-  }
-}
-
 server.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -64,7 +56,7 @@ server.post("/login", async (req, res) => {
     if (!user) {
       return res.status(401).json({
         message: "Invalid credentials",
-      }); 
+      });
     }
     const passwordIsCorrect = await bcrypt.compare(password, user.password);
     if (!passwordIsCorrect) {
@@ -86,6 +78,18 @@ server.post("/login", async (req, res) => {
   } catch (error) {
     console.error(error);
 
+    return res.status(500).json({
+      message: "Internal server error.",
+    });
+  }
+});
+
+server.get("/collection", async (req, res) => {
+  try {
+    const products = await prisma.products.findMany();
+    const productsBeta = products.slice(0, 6);//temporario
+    return res.status(200).json(productsBeta);
+  } catch (error) {
     return res.status(500).json({
       message: "Internal server error.",
     });

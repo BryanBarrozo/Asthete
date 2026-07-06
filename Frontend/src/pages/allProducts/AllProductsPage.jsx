@@ -1,65 +1,108 @@
-import styles from './AllProductsPage.module.css'
+import api from "../../services/api";
+import styles from "./AllProductsPage.module.css";
+import { useState, useEffect } from "react";
 
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
-import ProductCard from '../../components/ProductCard/ProductCard'
+function AllProductsPage() {
+  const [products, setProducts] = useState([]);
 
-function AllProductsPage(){
-    return(
-        <>
-        <Header/>
-        <main>
-            <div>
-                <p>Home &gt; Collection</p>
+  const fetchProducts = async () => {
+    try {
+      const response = await api.get("/collection");
+      setProducts(response.data);
+      console.log(response.data);
+    } catch {
+      alert("Internal Error!");
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  return (
+    <>
+      <Header />
+
+      <main className={styles.main}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <ol>
+            <li>
+              <a href="/">Home</a>
+            </li>
+
+            <li aria-current="page">Collection</li>
+          </ol>
+        </nav>
+
+        <section className={styles.title}>
+          <div>
+            <h1>Curated Objects</h1>
+          </div>
+
+          <p>
+            A selection of thoughtfully designed pieces for the modern interior.
+            Each object is a study in form, material, and purpose.
+          </p>
+        </section>
+
+        <div className={styles.content}>
+          <aside className={styles.filter}>
+            <div className={styles.filterCategory}>
+              <h2>CATEGORY</h2>
+
+              <ul className={styles.categoryList}>
+                <li>All Objects {products.length}</li>
+                <li>Furniture{}</li>
+                <li>Clothes{}</li>
+                <li>Shoes{}</li>
+              </ul>
             </div>
-            <div className={styles.title}>
-                <h2>Curated Objects</h2>
-                <p>A selection of thoughtfully designed pieces for the modern interior. Each object is a study in form, material, and purpose.</p>
-            </div>
-            <div>
-                <aside className={styles.filter}>
-                    <h3>CATEGORY</h3>
-                    <ul>
-                        <li>All Objects</li>
-                        <li>Furniture</li>
-                        <li>Clothes</li>
-                        <li>Shoes</li>
-                    </ul>
-                    <div>
-                        <h4>PRICE RANGE</h4>
-                        <div> {/*to DO--Filtro de preço*/}
-                            <span>$0</span>
-                            <span>$2.000+</span>
-                        </div>
-                    </div>
 
-                    <button type='button'>CLEAR FILTERS</button>
-                </aside>
+            <div className={styles.filterPrice}>
+              <h2>PRICE RANGE</h2>
+
+              {/*colocar estilo de linha do price range */}
+
+              <div className={styles.priceRange}>
+                <span>$0</span>
+                <span>$2.000+</span>
+              </div>
             </div>
-            <section className={styles.allProducts}>
-                <h3>Showing x of x items</h3>
-                <div>
-                    <span></span>{/*span para criar uma linha divisiva*/}
-                </div>
-                {/*Produtos 
-                trocar pelo map
-                */}
-                <div>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                </div>
-                <div>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                    <ProductCard name={'jose'} value={300} src={'link'} alt={'vasoe de planta'}/>
-                </div>
-            </section>
-        </main>
-        <Footer/>
-        </>
-    )
+
+            <button className={styles.clearButton} type="button">
+              CLEAR FILTERS
+            </button>
+          </aside>
+
+          <section className={styles.allProducts}>
+            <div className={styles.productsHeader}>
+              <p>Showing 6 of {products.length} items</p>
+
+              <span className={styles.divider}></span>
+            </div>
+
+            <div className={styles.productsGrid}>
+              {products.map((item) => (
+                <ProductCard
+                  key={item.id}
+                  name={item.name}
+                  value={item.price}
+                  src={item.image_url}
+                  alt={item.description}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
 }
 
-export default AllProductsPage
+export default AllProductsPage;

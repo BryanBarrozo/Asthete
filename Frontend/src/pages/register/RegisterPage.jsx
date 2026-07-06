@@ -22,7 +22,7 @@ function RegisterPage() {
 
       alert(response.data.message);
     } catch (error) {
-      alert("Error");
+      alert("Internal Error");
     }
   };
 
